@@ -1,6 +1,6 @@
 {
     "name": "asset-suppressor-webpack-plugin",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "description": "Prevent Webpack from outputting unwanted asset files",
     "author": "Derek Dunagan",
     "license": "MIT",

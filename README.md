@@ -155,11 +155,11 @@ will output something similar to:
 
 ./target/<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;images/<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**logo**.d41d8cd98f00b204e9800998ecf8427e **.png** <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;_**assets**.3e267d4bba3349f61186 **.js**_ <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;**index**.3e267d4bba3349f61186 **.js** <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;**index**.59439cbef37d30a7a6f3e3b84d71b941 **.css** <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;**index**.fa5d58cd19972afd9f184420c5177aaa **.html** <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**logo.** d41d8cd98f00b204e9800998ecf8427e **.png** <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;_**assets.** 3e267d4bba3349f61186 **.js**_ <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;**index.** 3e267d4bba3349f61186 **.js** <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;**index.** 59439cbef37d30a7a6f3e3b84d71b941 **.css** <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;**index.** fa5d58cd19972afd9f184420c5177aaa **.html** <br/>
 
 Notice the `assets.3e267d4bba3349f61186.js` file. It contains no JavaScript needed in a web browser environment. `./config/webpack/entry.assets.js` merely tells Webpack to include `index.html` in the build and to parse it for its dependencies.
 
