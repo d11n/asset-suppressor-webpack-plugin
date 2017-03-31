@@ -9,11 +9,11 @@ The typical use case for Asset Suppressor is to prevent Webpack from outputting 
 ## Installation
 
 ```shell
-yarn add asset-suppressor-webpack-plugin --dev
+$ yarn add asset-suppressor-webpack-plugin --dev
 ```
 
 ```shell
-npm install asset-suppressor-webpack-plugin --save-dev
+$ npm install asset-suppressor-webpack-plugin --save-dev
 ```
 
 <br/>
@@ -158,10 +158,10 @@ require('../../source/index.js');
 <br/>
 
 ### Building with Webpack
-As long as `./source/index.html` includes `<link href="index.css"/>` and `<img src="images/logo.png">`, running `webpack` from the project root:
+As long as `./source/index.html` includes `<link href="index.css"/>` and `<img src="images/logo.png"/>`, running `webpack` from the project root:
 
 ```shell
-./node_modules/webpack/bin/webpack.js --config ./config/webpack/webpack.config.js
+$ ./node_modules/webpack/bin/webpack.js --config ./config/webpack/webpack.config.js
 ```
 
 will output something similar to:
