@@ -1,6 +1,6 @@
 # Asset Suppressor (Webpack plugin)
 
-### Prevent Webpack from outputting unwanted asset files.
+### Prevent Webpack from outputting unwanted asset files
 
 The typical use case for Asset Suppressor is to prevent Webpack from outputting `.js` files for chunks that do not include any JavaScript intended to be executed in a web browser. These chunks normally only include HTML files, CSS files, images, etc. and only have JavaScript intended to be executed by Node as part of Webpack.
 

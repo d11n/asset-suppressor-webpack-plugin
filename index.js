@@ -8,7 +8,7 @@
         this !== global && error('execute without the `new` keyword');
         has_run && error('has already run once');
         unused_args.length > 0
-            && warn('only one \`options\` argument is suppored.'
+            && warn('only one \`options\` argument is supported.'
                 + ` \`${ unused_args }\` will be ignored`
                 )
             ;
@@ -64,16 +64,16 @@
                     ? process_options(raw_options.chunks)
                     : undefined !== raw_options.chunk // no "s" on the end
                         ? process_options(raw_options.chunk)
-                        : null
+                        : process_options
                     ;
-                null === new_processed_options
+                process_options === new_processed_options
                     && warn_no_effect('passing in an options object'
                         + ' that does not have a "chunks" or "chunk" key'
                         )
                     ;
                 return new_processed_options;
         }
-        warn(`chunk names should be strings, using "${ raw_options}"`);
+        warn(`chunk names should be strings, will use "${ raw_options}"`);
         processed_options.chunks.push(String(raw_options));
         return processed_options;
     }
