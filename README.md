@@ -43,7 +43,7 @@ config.plugins.push(asset_suppressor([ 'assets' ]));
 ```json
 {
     "name": "asset-suppressor-example",
-    ...
+    "//": "other package fields",
     "dependencies": {
         "css-loader": "^0.28.0",
         "extract-loader": "^0.1.0",
@@ -155,16 +155,16 @@ will output something similar to:
 
 ./target/<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;images/<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**logo**.d41d8cd98f00b204e9800998ecf8427e**.png**<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;_**assets**.3e267d4bba3349f61186**.js**_<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;**index**.3e267d4bba3349f61186**.js**<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;**index**.59439cbef37d30a7a6f3e3b84d71b941**.css**<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;**index**.fa5d58cd19972afd9f184420c5177aaa**.html**<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**logo**.d41d8cd98f00b204e9800998ecf8427e **.png** <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;_**assets**.3e267d4bba3349f61186 **.js**_ <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;**index**.3e267d4bba3349f61186 **.js** <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;**index**.59439cbef37d30a7a6f3e3b84d71b941 **.css** <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;**index**.fa5d58cd19972afd9f184420c5177aaa **.html** <br/>
 
-Notice the `assets.3e267d4bba3349f61186.js` file. It contains no JavaScript needed in a web browser environment. `./config/webpack/entry.assets.js` merely serves to tell Webpack to include `index.html` in the build and to parse it for its dependencies (in this case, just `index.css` and `logo.png`).
+Notice the `assets.3e267d4bba3349f61186.js` file. It contains no JavaScript needed in a web browser environment. `./config/webpack/entry.assets.js` merely tells Webpack to include `index.html` in the build and to parse it for its dependencies.
 
 For a cleaner build with no useless `.js` files, Asset Suppressor
-tells Webpack to not output an `assets.*.js` by adding the following to `./config/webpack/webpack.config.js` just above the `module.exports` command:
+tells Webpack to not output the `.js` file (including its source map, if enabled) for the `assets` entry point by adding the following to `./config/webpack/webpack.config.js`, just above the `module.exports` line:
 
 ```javascript
 const asset_suppressor = require('asset-suppressor-webpack-plugin');
