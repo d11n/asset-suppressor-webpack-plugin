@@ -1,12 +1,17 @@
-(function main(webpack) {
+(function main(WEBPACK) {
     const package_name = 'asset-suppressor-webpack-plugin';
     let has_run = false;
-    let stderr;
-    return module.exports = asset_suppressor_plugin;
+    return module.exports = asset_suppressor_webpack_plugin;
 
-    function asset_suppressor_plugin(options, ...unused_args) {
-        this !== global && error('execute without the `new` keyword');
-        has_run && error('has already run once');
+    // -----------
+
+    function asset_suppressor_webpack_plugin(options, ...unused_args) {
+        this !== (global || window)
+            && error('execute without the `new` keyword')
+            ;
+        has_run
+            && error('has already run once')
+            ;
         unused_args.length > 0
             && warn('only one \`options\` argument is supported.'
                 + ` \`${ unused_args }\` will be ignored`
@@ -14,14 +19,13 @@
             ;
         has_run = true;
         const plugin_options = process_options(options);
-        return apply_plugin;
+        return asset_suppressor;
 
-        function apply_plugin() {
+        // -----------
+
+        function asset_suppressor() {
             const compiler = this;
-            compiler instanceof webpack.Compiler
-                ? compiler.plugin('emit', remove_assets)
-                : error('must be run by webpack')
-                ;
+            compiler.plugin('after-compile', remove_assets);
         }
 
         function remove_assets(compilation, callback) {
@@ -35,7 +39,7 @@
                     }
                 }
             }
-            callback && callback();
+            'function' === typeof callback && callback();
         }
     }
 
@@ -50,7 +54,7 @@
                     warn_no_effect('passing in an empty array');
                     return processed_options;
                 }
-                processed_options.chunks = raw_options.map(String);
+                processed_options.chunks = raw_options.map(process_options);
                 return processed_options;
             case 'function' === typeof raw_options:
                 warn_no_effect('passing in a function');
@@ -73,17 +77,16 @@
                     ;
                 return new_processed_options;
         }
-        warn(`chunk names should be strings, will use "${ raw_options}"`);
+        warn(`chunk names should be strings, will use "${ raw_options }"`);
         processed_options.chunks.push(String(raw_options));
         return processed_options;
     }
 
     function error(message) {
-        throw new Error(`${ package_name }: ${ message }.`);
+        WEBPACK.emitError(`${ package_name }: ${ message }.`);
     }
     function warn(message) {
-        stderr || (stderr = require('process').stderr);
-        stderr.write(`\x1b[33m${ package_name }: ${ message }.\x1b[0m\n`);
+        WEBPACK.emitWarning(`${ package_name }: ${ message }.`);
     }
     function warn_no_effect(message) {
         warn(`${ message } makes the plugin have no effect`);
