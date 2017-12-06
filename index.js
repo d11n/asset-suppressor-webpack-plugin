@@ -54,7 +54,7 @@
                     warn_no_effect('passing in an empty array');
                     return processed_options;
                 }
-                processed_options.chunks = raw_options.map(process_options);
+                processed_options.chunks = raw_options.map(String);
                 return processed_options;
             case 'function' === typeof raw_options:
                 warn_no_effect('passing in a function');
