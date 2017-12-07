@@ -1,6 +1,5 @@
 (function main(WEBPACK) {
     const package_name = 'asset-suppressor-webpack-plugin';
-    let has_run = false;
     return module.exports = asset_suppressor_webpack_plugin;
 
     // -----------
@@ -8,9 +7,6 @@
     function asset_suppressor_webpack_plugin(options, ...unused_args) {
         this !== (global || window)
             && error('execute without the `new` keyword')
-            ;
-        has_run
-            && error('has already run once')
             ;
         unused_args.length > 0
             && warn('only one \`options\` argument is supported.'
@@ -26,6 +22,7 @@
         function asset_suppressor() {
             const compiler = this;
             compiler.plugin('after-compile', remove_assets);
+            return true;
         }
 
         function remove_assets(compilation, callback) {
