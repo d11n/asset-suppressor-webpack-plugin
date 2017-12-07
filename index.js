@@ -1,4 +1,4 @@
-(function main(WEBPACK) {
+(function main() {
     const package_name = 'asset-suppressor-webpack-plugin';
     return module.exports = asset_suppressor_webpack_plugin;
 
@@ -13,7 +13,6 @@
                 + ` \`${ unused_args }\` will be ignored`
                 )
             ;
-        has_run = true;
         const plugin_options = process_options(options);
         return asset_suppressor;
 
@@ -80,14 +79,12 @@
     }
 
     function error(message) {
-        WEBPACK.emitError(`${ package_name }: ${ message }.`);
+        console.error(`${ package_name }: ${ message }.`);
     }
     function warn(message) {
-        WEBPACK.emitWarning(`${ package_name }: ${ message }.`);
+        console.warn(`${ package_name }: ${ message }.`);
     }
     function warn_no_effect(message) {
         warn(`${ message } makes the plugin have no effect`);
     }
-}(
-    require('webpack')
-));
+}());
