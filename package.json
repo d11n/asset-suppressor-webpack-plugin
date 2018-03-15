@@ -1,12 +1,12 @@
 {
     "name": "asset-suppressor-webpack-plugin",
-    "version": "0.1.7",
+    "version": "0.1.8",
     "description": "Prevent Webpack from outputting unwanted asset files",
     "author": "Derek Dunagan",
     "license": "MIT",
-    "homepage": "https://github.com/rhombal/asset-suppressor-webpack-plugin#readme",
+    "homepage": "https://github.com/d11n/asset-suppressor-webpack-plugin#readme",
     "repository": {
         "type": "git",
-        "url": "git@github.com:rhombal/asset-suppressor-webpack-plugin.git"
+        "url": "git@github.com:d11n/asset-suppressor-webpack-plugin.git"
     }
 }
